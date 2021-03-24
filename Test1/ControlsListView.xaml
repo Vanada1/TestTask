@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Test1.UserControl1"
+    x:Class="Test1.ControlsListView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,12 +14,17 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ScrollViewer>
-            <ListView />
+            <ListView>
+                <DataTemplate>
+                    <local:TestControlView />
+                </DataTemplate>
+            </ListView>
         </ScrollViewer>
-        <Button Grid.Row="1" HorizontalAlignment="Left">
-            <Button.Content >
-                <Image ></Image>
-            </Button.Content>
+        <Button
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Image Height="20" Source="Resources/add.png" />
         </Button>
     </Grid>
 </UserControl>
