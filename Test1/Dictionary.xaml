@@ -15,6 +15,23 @@
             <DataTrigger Binding="{Binding Path=HasErrors}" Value="True">
                 <Setter Property="Background" Value="#Fee" />
             </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+            </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style
+        x:Key="ButtonStyle"
+        BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Visibility" Value="Hidden" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
