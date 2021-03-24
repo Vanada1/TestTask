@@ -9,10 +9,13 @@ using GalaSoft.MvvmLight;
 
 namespace Test1ViewModel
 {
+    /// <summary>
+    /// Base view model class with errors
+    /// </summary>
     public class ErrorViewModelBase:ViewModelBase, INotifyDataErrorInfo
     {
         /// <summary>
-        /// Contains all <see cref="Contact"/> errors
+        /// Contains all errors
         /// </summary>
         private static readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
 

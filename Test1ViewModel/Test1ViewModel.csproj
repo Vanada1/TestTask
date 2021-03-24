@@ -56,8 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlsListViewModel.cs" />
     <Compile Include="ErrorViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestControlViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -114,5 +114,11 @@
   <ItemGroup>
     <Resource Include="Resources\remove.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Test1ViewModel\Test1ViewModel.csproj">
+      <Project>{d5f40e33-a569-46a3-b036-c21c1bd912fd}</Project>
+      <Name>Test1ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
