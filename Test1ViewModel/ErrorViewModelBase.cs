@@ -28,7 +28,7 @@ namespace Test1ViewModel
 		/// <inheritdoc />
 		public IEnumerable GetErrors(string propertyName)
 		{
-			if (propertyName == null) return null;
+			if (string.IsNullOrEmpty(propertyName)) return null;
 			return Errors.ContainsKey(propertyName) ? Errors[propertyName] : null;
 		}
 
