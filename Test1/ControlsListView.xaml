@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Test1"
+    xmlns:vm="clr-namespace:Test1ViewModel;assembly=Test1ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance vm:ControlsListViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -14,16 +16,18 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ScrollViewer>
-            <ListView>
+            <ListView ItemsSource="{Binding ControlsViewModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding SelectedItem}">
                 <DataTemplate>
-                    <local:TestControlView />
+                    <local:TestControlView/>
                 </DataTemplate>
             </ListView>
         </ScrollViewer>
         <Button
             Grid.Row="1"
             HorizontalAlignment="Left"
-            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+            Command="{Binding AddControlCommand}">
             <Image Height="20" Source="Resources/add.png" />
         </Button>
     </Grid>

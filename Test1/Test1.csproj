@@ -58,9 +58,14 @@
     <Compile Include="ControlsListView.xaml.cs">
       <DependentUpon>ControlsListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileDialogService.cs" />
     <Compile Include="TestControlView.xaml.cs">
       <DependentUpon>TestControlView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,5 +125,6 @@
       <Name>Test1ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
