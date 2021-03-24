@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Test1Model;
 using Test1ViewModel.Services;
 
 namespace Test1ViewModel
@@ -33,8 +34,7 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Container for <see cref="TestControlViewModel"/>
 		/// </summary>
-		public ObservableCollection<TestControlViewModel> ControlsViewModel { get; } =
-			new ObservableCollection<TestControlViewModel>();
+		public ObservableCollection<TestControlViewModel> ControlsViewModel { get; set; } 
 
 		/// <summary>
 		/// Returns and sets selected item
@@ -58,6 +58,7 @@ namespace Test1ViewModel
 		public ControlsListViewModel(IFileDialogService fileDialogService)
 		{
 			_fileDialogService = fileDialogService;
+			ControlsViewModel = new ObservableCollection<TestControlViewModel>();
 		}
 
 		/// <summary>
@@ -68,8 +69,21 @@ namespace Test1ViewModel
 			_fileDialogService.ShowDialog();
 			if (_fileDialogService.DialogResult)
 			{
-				ControlsViewModel.Add(new TestControlViewModel{FileName = _fileDialogService.FileName});
+				ControlsViewModel.Add(new TestControlViewModel
+				{
+					FileName = StringManager.TakeFileName(_fileDialogService.FileName),
+					RemoveCommand = new RelayCommand<object>(RemoveControl)
+				});
 			}
+		}
+
+		/// <summary>
+		/// Remove control
+		/// </summary>
+		private void RemoveControl(object sender)
+		{
+			var control = (TestControlViewModel) sender;
+			ControlsViewModel.Remove(control);
 		}
 	}
 }

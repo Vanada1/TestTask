@@ -17,6 +17,8 @@ namespace Test1ViewModel
 		/// </summary>
 		private string _fileName;
 
+		private RelayCommand<object> _removeCommand;
+
 		/// <summary>
 		/// Returns and sets filename
 		/// </summary>
@@ -28,12 +30,22 @@ namespace Test1ViewModel
 				_fileName = value;
 				Validation(_fileName, nameof(FileName));
 				RaisePropertyChanged(nameof(FileName));
+				RaisePropertyChanged(nameof(HasErrors));
 			}
 		}
 
 		/// <summary>
 		/// Filename remove command
 		/// </summary>
-		public RelayCommand RemoveCommand { get; set; }
+		public RelayCommand<object> RemoveCommand
+		{
+			get=>_removeCommand;
+			set
+			{
+				_removeCommand = value;
+				RaisePropertyChanged(nameof(RemoveCommand));
+				RaisePropertyChanged(nameof(HasErrors));
+			}
+		}
 	}
 }

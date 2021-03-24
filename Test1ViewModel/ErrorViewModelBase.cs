@@ -28,6 +28,7 @@ namespace Test1ViewModel
 		/// <inheritdoc />
 		public IEnumerable GetErrors(string propertyName)
 		{
+			if (propertyName == null) return null;
 			return _errors.ContainsKey(propertyName) ? _errors[propertyName] : null;
 		}
 
@@ -39,13 +40,11 @@ namespace Test1ViewModel
 		protected virtual void Validation(object value, string propertyName)
 		{
 			ClearErrors(propertyName);
-			try
+			if (!(value is string valueString)) return;
+			var expansion = valueString.Split('.').Last();
+			if (expansion != "exe" && expansion != "dll")
 			{
-				
-			}
-			catch (ArgumentException e)
-			{
-				AddError(propertyName, e.Message);
+				AddError(propertyName, "Not .dll or .exe");
 			}
 		}
 

@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test1"
+        xmlns:vm="clr-namespace:Test1ViewModel;assembly=Test1ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300" ResizeMode="NoResize">
+        Title="Task 1" Height="450" Width="300" ResizeMode="NoResize">
     <Grid>
-        <local:ControlsListView></local:ControlsListView>
+        <local:ControlsListView DataContext="{Binding ControlsListViewModel, Mode=TwoWay}"/>
     </Grid>
 </Window>

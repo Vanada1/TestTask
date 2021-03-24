@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test1ViewModel;
 
 namespace Test1
 {
@@ -23,6 +24,7 @@ namespace Test1
         public MainWindow()
         {
             InitializeComponent();
+            DataContext=new MainViewModel(new FileDialogService());
         }
     }
 }

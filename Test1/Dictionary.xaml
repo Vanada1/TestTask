@@ -1,7 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Test1ViewModel;assembly=Test1ViewModel"
                     xmlns:local="clr-namespace:Test1">
     <Style x:Key="DefaultStyle" TargetType="Control">
         <Setter Property="Margin" Value="3"/>
+    </Style>
+
+    <Style x:Key="UserControlStyle" TargetType="UserControl" BasedOn="{StaticResource DefaultStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding (vm:TestControlViewModel.HasErrors)}" Value="True">
+                <Setter Property="Background" Value="#FEE"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

@@ -24,8 +24,12 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-            Command="{Binding RemoveCommand}" Margin="3">
+            Command="{Binding RemoveCommand, ConverterParameter=this}" 
+            Margin="3">
             <Image Height="18" Source="Resources/remove.png" />
+            <Button.CommandParameter>
+                <Binding />
+            </Button.CommandParameter>
         </Button>
     </Grid>
 </UserControl>
