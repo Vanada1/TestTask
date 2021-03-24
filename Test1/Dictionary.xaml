@@ -8,9 +8,9 @@
 
     <Style x:Key="UserControlStyle" TargetType="UserControl" BasedOn="{StaticResource DefaultStyle}">
         <Style.Triggers>
-            <DataTrigger Binding="{Binding (vm:TestControlViewModel.HasErrors)}" Value="True">
-                <Setter Property="Background" Value="#FEE"></Setter>
-            </DataTrigger>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="Background" Value="PaleVioletRed"></Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

@@ -17,10 +17,10 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Contains all errors
 		/// </summary>
-		private static readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+		private static readonly Dictionary<string, List<string>> Errors = new Dictionary<string, List<string>>();
 
 		/// <inheritdoc />
-		public bool HasErrors => _errors.Any();
+		public bool HasErrors => Errors.Any();
 		
 		/// <inheritdoc />
 		public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
@@ -29,7 +29,7 @@ namespace Test1ViewModel
 		public IEnumerable GetErrors(string propertyName)
 		{
 			if (propertyName == null) return null;
-			return _errors.ContainsKey(propertyName) ? _errors[propertyName] : null;
+			return Errors.ContainsKey(propertyName) ? Errors[propertyName] : null;
 		}
 
 		/// <summary>
@@ -58,19 +58,19 @@ namespace Test1ViewModel
 		}
 
 		/// <summary>
-		/// Add error in the dictionary <see cref="_errors"/>
+		/// Add error in the dictionary <see cref="Errors"/>
 		/// </summary>
 		/// <param name="propertyName"></param>
 		/// <param name="error"></param>
 		private void AddError(string propertyName, string error)
 		{
-			if (!_errors.ContainsKey(propertyName))
+			if (!Errors.ContainsKey(propertyName))
 			{
-				_errors[propertyName] = new List<string>();
+				Errors[propertyName] = new List<string>();
 			}
 
-			if (_errors[propertyName].Contains(error)) return;
-			_errors[propertyName].Add(error);
+			if (Errors[propertyName].Contains(error)) return;
+			Errors[propertyName].Add(error);
 			OnErrorsChanged(propertyName);
 		}
 
@@ -80,9 +80,9 @@ namespace Test1ViewModel
 		/// <param name="propertyName">key of dictionary</param>
 		private void ClearErrors(string propertyName)
 		{
-			if (!_errors.ContainsKey(propertyName)) return;
-			_errors[propertyName].Clear();
-			_errors.Remove(propertyName);
+			if (!Errors.ContainsKey(propertyName)) return;
+			Errors[propertyName].Clear();
+			Errors.Remove(propertyName);
 			OnErrorsChanged(propertyName);
 		}
 

@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <DataTemplate x:Key="TestControl">
-            <local:TestControlView HorizontalAlignment="Stretch" />
+            <local:TestControlView HorizontalAlignment="Stretch" Style="{DynamicResource UserControlStyle}"/>
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
