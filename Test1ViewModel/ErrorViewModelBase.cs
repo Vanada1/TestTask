@@ -9,7 +9,7 @@ using GalaSoft.MvvmLight;
 
 namespace Test1ViewModel
 {
-    public class ErroViewModelBase:ViewModelBase, INotifyDataErrorInfo
+    public class ErrorViewModelBase:ViewModelBase, INotifyDataErrorInfo
     {
         /// <summary>
         /// Contains all <see cref="Contact"/> errors
