@@ -42,11 +42,7 @@ namespace Test1ViewModel
 		public TestControlViewModel SelectedControl
 		{
 			get => _selectedControl;
-			set
-			{
-				_selectedControl = value;
-				RaisePropertyChanged(nameof(SelectedControl));
-			}
+			set => Set(ref _selectedControl, value);
 		}
 
 		/// <summary>

@@ -22,9 +22,8 @@ namespace Test1ViewModel
 			get => _fileName;
 			set
 			{
-				_fileName = value;
-				Validation(_fileName, nameof(FileName));
-				RaisePropertyChanged(nameof(FileName));
+				Validation(value, nameof(FileName));
+				Set(ref _fileName, value);
 				RaisePropertyChanged(nameof(HasErrors));
 			}
 		}
@@ -37,8 +36,7 @@ namespace Test1ViewModel
 			get=>_removeCommand;
 			set
 			{
-				_removeCommand = value;
-				RaisePropertyChanged(nameof(RemoveCommand));
+				Set(ref _removeCommand, value);
 				RaisePropertyChanged(nameof(HasErrors));
 			}
 		}
