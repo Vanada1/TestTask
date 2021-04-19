@@ -15,26 +15,26 @@ namespace Test1ViewModel
 	public class MainViewModel:ViewModelBase
 	{
 		/// <summary>
-		/// <see cref="ControlsListViewModel"/>
+		/// <see cref="Controls"/>
 		/// </summary>
-		private ControlsListViewModel _controlsListViewModel;
+		private Controls _controls;
 
 		/// <summary>
-		/// Returns and sets <see cref="ControlsListViewModel"/>
+		/// Returns and sets <see cref="Controls"/>
 		/// </summary>
-		public ControlsListViewModel ControlsListViewModel
+		public Controls Controls
 		{
-			get => _controlsListViewModel;
+			get => _controls;
 			set
 			{
-				_controlsListViewModel = value;
-				RaisePropertyChanged(nameof(ControlsListViewModel));
+				_controls = value;
+				RaisePropertyChanged(nameof(Controls));
 			}
 		}
 
 		public MainViewModel(IFileDialogService fileDialogService)
 		{
-			ControlsListViewModel = new ControlsListViewModel(fileDialogService);
+			Controls = new Controls(fileDialogService);
 		}
 	}
 }

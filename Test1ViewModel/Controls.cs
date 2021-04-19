@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Test1Model;
 using Test1ViewModel.Services;
 
 namespace Test1ViewModel
@@ -14,7 +14,7 @@ namespace Test1ViewModel
 	/// <summary>
 	/// View model for ControlsListView
 	/// </summary>
-	public class ControlsListViewModel :ViewModelBase
+	public class Controls :ViewModelBase
 	{
 		/// <summary>
 		/// File dialog service
@@ -29,7 +29,7 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Selected <see cref="TestControlViewModel"/>
 		/// </summary>
-		private TestControlViewModel _selectedItem;
+		private TestControlViewModel _selectedControl;
 
 		/// <summary>
 		/// Container for <see cref="TestControlViewModel"/>
@@ -39,13 +39,13 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Returns and sets selected item
 		/// </summary>
-		public TestControlViewModel SelectedItem
+		public TestControlViewModel SelectedControl
 		{
-			get => _selectedItem;
+			get => _selectedControl;
 			set
 			{
-				_selectedItem = value;
-				RaisePropertyChanged(nameof(SelectedItem));
+				_selectedControl = value;
+				RaisePropertyChanged(nameof(SelectedControl));
 			}
 		}
 
@@ -55,7 +55,7 @@ namespace Test1ViewModel
 		public RelayCommand AddControlCommand => _addControlCommand ??
 												 (_addControlCommand = new RelayCommand(AddControl));
 
-		public ControlsListViewModel(IFileDialogService fileDialogService)
+		public Controls(IFileDialogService fileDialogService)
 		{
 			_fileDialogService = fileDialogService;
 			ControlsViewModel = new ObservableCollection<TestControlViewModel>();
@@ -71,8 +71,8 @@ namespace Test1ViewModel
 			{
 				ControlsViewModel.Add(new TestControlViewModel
 				{
-					FileName = StringManager.TakeFileName(_fileDialogService.FileName),
-					RemoveCommand = new RelayCommand<object>(RemoveControl)
+					FileName = Path.GetFileName(_fileDialogService.FileName),
+					RemoveCommand = new RelayCommand<TestControlViewModel>(RemoveControl)
 				});
 			}
 		}
@@ -80,10 +80,9 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Remove control
 		/// </summary>
-		private void RemoveControl(object sender)
+		private void RemoveControl(TestControlViewModel sender)
 		{
-			var control = (TestControlViewModel) sender;
-			ControlsViewModel.Remove(control);
+			ControlsViewModel.Remove(sender);
 		}
 	}
 }

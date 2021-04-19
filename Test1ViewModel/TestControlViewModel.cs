@@ -17,7 +17,7 @@ namespace Test1ViewModel
 		/// </summary>
 		private string _fileName;
 
-		private RelayCommand<object> _removeCommand;
+		private RelayCommand<TestControlViewModel> _removeCommand;
 
 		/// <summary>
 		/// Returns and sets filename
@@ -37,7 +37,7 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Filename remove command
 		/// </summary>
-		public RelayCommand<object> RemoveCommand
+		public RelayCommand<TestControlViewModel> RemoveCommand
 		{
 			get=>_removeCommand;
 			set

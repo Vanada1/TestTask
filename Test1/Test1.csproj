@@ -55,8 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ControlsListView.xaml.cs">
-      <DependentUpon>ControlsListView.xaml</DependentUpon>
+    <Compile Include="ControlsView.xaml.cs">
+      <DependentUpon>ControlsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileDialogService.cs" />
     <Compile Include="TestControlView.xaml.cs">
@@ -78,7 +78,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ControlsListView.xaml">
+    <Page Include="ControlsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
