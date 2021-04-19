@@ -74,6 +74,7 @@ namespace Test1ViewModel
 					FileName = Path.GetFileName(_fileDialogService.FileName),
 					RemoveCommand = new RelayCommand<TestControlViewModel>(RemoveControl)
 				});
+				RaisePropertyChanged(nameof(ControlsViewModel));
 			}
 		}
 
