@@ -13,7 +13,7 @@
         TargetType="local:TestControlView">
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=HasErrors}" Value="True">
-                <Setter Property="Background" Value="#Fee" />
+                <Setter Property="Background" Value="#fee" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Visibility" Value="Visible" />

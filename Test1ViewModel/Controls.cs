@@ -14,7 +14,7 @@ namespace Test1ViewModel
 	/// <summary>
 	/// View model for ControlsListView
 	/// </summary>
-	public class ControlsListViewModel :ViewModelBase
+	public class Controls :ViewModelBase
 	{
 		/// <summary>
 		/// File dialog service
@@ -55,7 +55,7 @@ namespace Test1ViewModel
 		public RelayCommand AddControlCommand => _addControlCommand ??
 												 (_addControlCommand = new RelayCommand(AddControl));
 
-		public ControlsListViewModel(IFileDialogService fileDialogService)
+		public Controls(IFileDialogService fileDialogService)
 		{
 			_fileDialogService = fileDialogService;
 			ControlsViewModel = new ObservableCollection<TestControlViewModel>();
