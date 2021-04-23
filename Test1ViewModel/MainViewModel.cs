@@ -25,11 +25,7 @@ namespace Test1ViewModel
 		public Controls Controls
 		{
 			get => _controls;
-			set
-			{
-				_controls = value;
-				RaisePropertyChanged(nameof(Controls));
-			}
+			set => Set(ref _controls, value);
 		}
 
 		public MainViewModel(IFileDialogService fileDialogService)

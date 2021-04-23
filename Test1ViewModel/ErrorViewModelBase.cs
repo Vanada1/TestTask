@@ -12,7 +12,7 @@ namespace Test1ViewModel
 	/// <summary>
 	/// Base view model class with errors
 	/// </summary>
-	public class ErrorViewModelBase:ViewModelBase, INotifyDataErrorInfo
+	public abstract class ErrorViewModelBase:ViewModelBase, INotifyDataErrorInfo
 	{
 		/// <summary>
 		/// Contains all errors
@@ -85,7 +85,5 @@ namespace Test1ViewModel
 			Errors.Remove(propertyName);
 			OnErrorsChanged(propertyName);
 		}
-
-
 	}
 }

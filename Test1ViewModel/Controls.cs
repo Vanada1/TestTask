@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Test1Model;
 using Test1ViewModel.Services;
 
 namespace Test1ViewModel
@@ -29,7 +29,7 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Selected <see cref="TestControlViewModel"/>
 		/// </summary>
-		private TestControlViewModel _selectedItem;
+		private TestControlViewModel _selectedControl;
 
 		/// <summary>
 		/// Container for <see cref="TestControlViewModel"/>
@@ -39,14 +39,10 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Returns and sets selected item
 		/// </summary>
-		public TestControlViewModel SelectedItem
+		public TestControlViewModel SelectedControl
 		{
-			get => _selectedItem;
-			set
-			{
-				_selectedItem = value;
-				RaisePropertyChanged(nameof(SelectedItem));
-			}
+			get => _selectedControl;
+			set => Set(ref _selectedControl, value);
 		}
 
 		/// <summary>
@@ -71,8 +67,8 @@ namespace Test1ViewModel
 			{
 				ControlsViewModel.Add(new TestControlViewModel
 				{
-					FileName = StringManager.TakeFileName(_fileDialogService.FileName),
-					RemoveCommand = new RelayCommand<object>(RemoveControl)
+					FileName = Path.GetFileName(_fileDialogService.FileName),
+					RemoveCommand = new RelayCommand<TestControlViewModel>(RemoveControl)
 				});
 				RaisePropertyChanged(nameof(ControlsViewModel));
 			}
@@ -81,10 +77,9 @@ namespace Test1ViewModel
 		/// <summary>
 		/// Remove control
 		/// </summary>
-		private void RemoveControl(object sender)
+		private void RemoveControl(TestControlViewModel sender)
 		{
-			var control = (TestControlViewModel) sender;
-			ControlsViewModel.Remove(control);
+			ControlsViewModel.Remove(sender);
 		}
 	}
 }
